@@ -16,13 +16,13 @@ class TestKorail(unittest.TestCase):
         self.assertEqual(rv, True)
 
     def test_1_search_ktx(self):
-        from datetime import datetime
+        from datetime import datetime, timedelta
         dep = '0001'
         arr = '0015'
         train_type = '00'
         date = datetime.strftime(datetime.now(), '%Y%m%d')
-        time = datetime.strftime(datetime.now(), '%H%M%S')
-
+        time = datetime.strftime(datetime.now() + timedelta(days=1),
+                                 '%H%M%S')
         try:
             trains = self.korail.search_train(dep, arr, date, time, train_type)
         except KorailError as e:
@@ -35,8 +35,9 @@ class TestKorail(unittest.TestCase):
 
     def test_2_search_reserve(self):
         from datetime import datetime
+        import stations
         dep = '0001'
-        arr = '0015'
+        arr = '0002'
         date = datetime.strftime(datetime.now(), '%Y%m%d')
         time = datetime.strftime(datetime.now(), '%H%M%S')
 
