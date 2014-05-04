@@ -1,1 +1,1 @@
-from .korail import Korail
+from .korail import Korail, KorailError

@@ -1,7 +1,7 @@
+from korail import Korail, KorailError
 import simplejson
 import sys
 import getopt
-from korail import Korail
 
 def main(argv=None):
     print '0. preparation ----------'
